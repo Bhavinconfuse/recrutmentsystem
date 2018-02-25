@@ -1,0 +1,500 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="RecrutmentsysModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CANDIDATE_FEEDBACK_POSITION">
+          <Key>
+            <PropertyRef Name="FeedbackId" />
+          </Key>
+          <Property Name="FeedbackId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CandidateCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CandidateEmail" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Candidate_Yof_exp" Type="float" Nullable="false" />
+          <Property Name="CompanyId" Type="int" Nullable="false" />
+          <Property Name="DepartmentCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DepartmentName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="RequestedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="HrId" Type="int" Nullable="false" />
+          <Property Name="HrEmail" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Name_of_Vacancy" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Number_of_Position" Type="numeric" Precision="18" Scale="6" Nullable="false" />
+          <Property Name="Required_Technical_Skill" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Special_Technical_Skill" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Min_Yearof_Experience" Type="float" Nullable="false" />
+          <Property Name="Min_Qualification" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Deadline_Date" Type="datetime" />
+          <Property Name="Requested_Date" Type="datetime" />
+          <Property Name="RoundingPercentage" Type="float" />
+          <Property Name="OfferLatter" Type="nvarchar" MaxLength="5" />
+          <Property Name="Feedbackprocess" Type="bit" />
+        </EntityType>
+        <EntityType Name="CANDIDATE_POSITION">
+          <Key>
+            <PropertyRef Name="CandidateId" />
+          </Key>
+          <Property Name="CandidateId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyId" Type="int" Nullable="false" />
+          <Property Name="DepartmentCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="DepartmentName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="HrId" Type="int" Nullable="false" />
+          <Property Name="CandidateCode" Type="nvarchar" MaxLength="10" StoreGeneratedPattern="Computed" />
+          <Property Name="CandidateEmail" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Candidate_Yof_exp" Type="float" Nullable="false" />
+          <Property Name="ISActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="COMPANY_HR_REGISTER">
+          <Key>
+            <PropertyRef Name="HrId" />
+          </Key>
+          <Property Name="HrId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyId" Type="int" />
+          <Property Name="HrName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="HrContact" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="HrEmail" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="COMPANY_JOB_OPENING">
+          <Key>
+            <PropertyRef Name="DepatmentID" />
+          </Key>
+          <Property Name="DepatmentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyId" Type="int" Nullable="false" />
+          <Property Name="DepartmentCode" Type="nvarchar" MaxLength="10" StoreGeneratedPattern="Computed" />
+          <Property Name="DepartmentName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="RequestedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="HrId" Type="int" Nullable="false" />
+          <Property Name="HrEmail" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Name_of_Vacancy" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Number_of_Position" Type="numeric" Precision="18" Scale="6" Nullable="false" />
+          <Property Name="Required_Technical_Skill" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Special_Technical_Skill" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Min_Yearof_Experience" Type="float" Nullable="false" />
+          <Property Name="Min_Qualification" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Deadline_Date" Type="datetime" />
+          <Property Name="Requested_Date" Type="datetime" />
+          <Property Name="Approval" Type="bit" />
+        </EntityType>
+        <EntityType Name="COMPANY_JOB_OPENING_REFRENCES">
+          <Key>
+            <PropertyRef Name="Job_refrenceId" />
+          </Key>
+          <Property Name="Job_refrenceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyId" Type="int" Nullable="false" />
+          <Property Name="DepartmentCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="HrId" Type="int" Nullable="false" />
+          <Property Name="Number_of_Position" Type="numeric" Precision="18" Scale="6" />
+          <Property Name="RowcreatedDate" Type="datetime" />
+          <Property Name="RowModifiddate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="COMPANY_REGISTER">
+          <Key>
+            <PropertyRef Name="CompanyId" />
+          </Key>
+          <Property Name="CompanyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ComapanyName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="CompanyEmail" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="CompanyContect" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="CompanyAddress" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="COMPANY_REGISTER_REFRENCES">
+          <Key>
+            <PropertyRef Name="ComapanyRefId" />
+          </Key>
+          <Property Name="ComapanyRefId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyId" Type="int" />
+          <Property Name="CompanyEmailRef" Type="nvarchar" MaxLength="100" />
+          <Property Name="CompanyPassword" Type="nvarchar" MaxLength="50" />
+          <Property Name="CompanyType" Type="nvarchar" MaxLength="10" />
+          <Property Name="ConfirmedEmail" Type="bit" />
+        </EntityType>
+        <EntityType Name="Round_Detail_feedback">
+          <Key>
+            <PropertyRef Name="RoundId" />
+          </Key>
+          <Property Name="RoundId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyId" Type="int" Nullable="false" />
+          <Property Name="CandidateCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DepartmentCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="HrId" Type="int" Nullable="false" />
+          <Property Name="RoundOne" Type="nvarchar(max)" />
+          <Property Name="RoundOne_per" Type="int" />
+          <Property Name="RoundTwo" Type="nvarchar(max)" />
+          <Property Name="RoundTwo_per" Type="int" />
+          <Property Name="RoundThree" Type="nvarchar(max)" />
+          <Property Name="RoundThree_per" Type="int" />
+          <Property Name="totalround_per" Type="int" />
+        </EntityType>
+        <Association Name="FK__COMPANY_H__Compa__3587F3E0">
+          <End Role="COMPANY_REGISTER" Type="Self.COMPANY_REGISTER" Multiplicity="0..1" />
+          <End Role="COMPANY_HR_REGISTER" Type="Self.COMPANY_HR_REGISTER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COMPANY_REGISTER">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="COMPANY_HR_REGISTER">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__COMPANY_R__Compa__30C33EC3">
+          <End Role="COMPANY_REGISTER" Type="Self.COMPANY_REGISTER" Multiplicity="0..1" />
+          <End Role="COMPANY_REGISTER_REFRENCES" Type="Self.COMPANY_REGISTER_REFRENCES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COMPANY_REGISTER">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="COMPANY_REGISTER_REFRENCES">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="RecrutmentsysModelStoreContainer">
+          <EntitySet Name="CANDIDATE_FEEDBACK_POSITION" EntityType="Self.CANDIDATE_FEEDBACK_POSITION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CANDIDATE_POSITION" EntityType="Self.CANDIDATE_POSITION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="COMPANY_HR_REGISTER" EntityType="Self.COMPANY_HR_REGISTER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="COMPANY_JOB_OPENING" EntityType="Self.COMPANY_JOB_OPENING" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="COMPANY_JOB_OPENING_REFRENCES" EntityType="Self.COMPANY_JOB_OPENING_REFRENCES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="COMPANY_REGISTER" EntityType="Self.COMPANY_REGISTER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="COMPANY_REGISTER_REFRENCES" EntityType="Self.COMPANY_REGISTER_REFRENCES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Round_Detail_feedback" EntityType="Self.Round_Detail_feedback" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__COMPANY_H__Compa__3587F3E0" Association="Self.FK__COMPANY_H__Compa__3587F3E0">
+            <End Role="COMPANY_REGISTER" EntitySet="COMPANY_REGISTER" />
+            <End Role="COMPANY_HR_REGISTER" EntitySet="COMPANY_HR_REGISTER" />
+          </AssociationSet>
+          <AssociationSet Name="FK__COMPANY_R__Compa__30C33EC3" Association="Self.FK__COMPANY_R__Compa__30C33EC3">
+            <End Role="COMPANY_REGISTER" EntitySet="COMPANY_REGISTER" />
+            <End Role="COMPANY_REGISTER_REFRENCES" EntitySet="COMPANY_REGISTER_REFRENCES" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="RecrutmentsysModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="RecrutmentsysEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="COMPANY_REGISTER" EntityType="RecrutmentsysModel.COMPANY_REGISTER" />
+          <EntitySet Name="COMPANY_HR_REGISTER" EntityType="RecrutmentsysModel.COMPANY_HR_REGISTER" />
+          <EntitySet Name="COMPANY_JOB_OPENING" EntityType="RecrutmentsysModel.COMPANY_JOB_OPENING" />
+          <EntitySet Name="COMPANY_JOB_OPENING_REFRENCES" EntityType="RecrutmentsysModel.COMPANY_JOB_OPENING_REFRENCES" />
+          <EntitySet Name="CANDIDATE_POSITION" EntityType="RecrutmentsysModel.CANDIDATE_POSITION" />
+          <EntitySet Name="Round_Detail_feedback" EntityType="RecrutmentsysModel.Round_Detail_feedback" />
+          <AssociationSet Name="FK__COMPANY_H__Compa__00200768" Association="RecrutmentsysModel.FK__COMPANY_H__Compa__00200768">
+            <End Role="COMPANY_REGISTER" EntitySet="COMPANY_REGISTER" />
+            <End Role="COMPANY_HR_REGISTER" EntitySet="COMPANY_HR_REGISTER" />
+          </AssociationSet>
+          <EntitySet Name="CANDIDATE_FEEDBACK_POSITION" EntityType="RecrutmentsysModel.CANDIDATE_FEEDBACK_POSITION" />
+          <EntitySet Name="COMPANY_REGISTER_REFRENCES" EntityType="RecrutmentsysModel.COMPANY_REGISTER_REFRENCES" />
+          <AssociationSet Name="FK__COMPANY_R__Compa__30C33EC3" Association="RecrutmentsysModel.FK__COMPANY_R__Compa__30C33EC3">
+            <End Role="COMPANY_REGISTER" EntitySet="COMPANY_REGISTER" />
+            <End Role="COMPANY_REGISTER_REFRENCES" EntitySet="COMPANY_REGISTER_REFRENCES" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="COMPANY_REGISTER">
+          <Key>
+            <PropertyRef Name="CompanyId" />
+          </Key>
+          <Property Name="CompanyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ComapanyName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyEmail" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyContect" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyAddress" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="COMPANY_HR_REGISTER" Relationship="RecrutmentsysModel.FK__COMPANY_H__Compa__00200768" FromRole="COMPANY_REGISTER" ToRole="COMPANY_HR_REGISTER" />
+          <NavigationProperty Name="COMPANY_REGISTER_REFRENCES" Relationship="RecrutmentsysModel.FK__COMPANY_R__Compa__30C33EC3" FromRole="COMPANY_REGISTER" ToRole="COMPANY_REGISTER_REFRENCES" />
+        </EntityType>
+        <EntityType Name="COMPANY_HR_REGISTER">
+          <Key>
+            <PropertyRef Name="HrId" />
+          </Key>
+          <Property Name="HrId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyId" Type="Int32" />
+          <Property Name="HrName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HrContact" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="HrEmail" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="COMPANY_REGISTER" Relationship="RecrutmentsysModel.FK__COMPANY_H__Compa__00200768" FromRole="COMPANY_HR_REGISTER" ToRole="COMPANY_REGISTER" />
+        </EntityType>
+        <EntityType Name="COMPANY_JOB_OPENING">
+          <Key>
+            <PropertyRef Name="DepatmentID" />
+          </Key>
+          <Property Name="DepatmentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyId" Type="Int32" Nullable="false" />
+          <Property Name="DepartmentCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="DepartmentName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="RequestedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HrId" Type="Int32" Nullable="false" />
+          <Property Name="HrEmail" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Name_of_Vacancy" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Number_of_Position" Type="Decimal" Nullable="false" Precision="18" Scale="6" />
+          <Property Name="Required_Technical_Skill" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Special_Technical_Skill" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Min_Yearof_Experience" Type="Double" Nullable="false" />
+          <Property Name="Min_Qualification" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Deadline_Date" Type="DateTime" Precision="3" />
+          <Property Name="Requested_Date" Type="DateTime" Precision="3" />
+          <Property Name="Approval" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="COMPANY_JOB_OPENING_REFRENCES">
+          <Key>
+            <PropertyRef Name="Job_refrenceId" />
+          </Key>
+          <Property Name="Job_refrenceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyId" Type="Int32" Nullable="false" />
+          <Property Name="DepartmentCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HrId" Type="Int32" Nullable="false" />
+          <Property Name="Number_of_Position" Type="Decimal" Precision="18" Scale="6" />
+          <Property Name="RowcreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="RowModifiddate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="CANDIDATE_POSITION">
+          <Key>
+            <PropertyRef Name="CandidateId" />
+          </Key>
+          <Property Name="CandidateId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyId" Type="Int32" Nullable="false" />
+          <Property Name="DepartmentCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DepartmentName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="HrId" Type="Int32" Nullable="false" />
+          <Property Name="CandidateCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="CandidateEmail" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Candidate_Yof_exp" Type="Double" Nullable="false" />
+          <Property Name="ISActive" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Round_Detail_feedback">
+          <Key>
+            <PropertyRef Name="RoundId" />
+          </Key>
+          <Property Name="RoundId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyId" Type="Int32" Nullable="false" />
+          <Property Name="CandidateCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DepartmentCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HrId" Type="Int32" Nullable="false" />
+          <Property Name="RoundOne" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RoundOne_per" Type="Int32" />
+          <Property Name="RoundTwo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RoundTwo_per" Type="Int32" />
+          <Property Name="RoundThree" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RoundThree_per" Type="Int32" />
+          <Property Name="totalround_per" Type="Int32" />
+        </EntityType>
+        <Association Name="FK__COMPANY_H__Compa__00200768">
+          <End Type="RecrutmentsysModel.COMPANY_REGISTER" Role="COMPANY_REGISTER" Multiplicity="0..1" />
+          <End Type="RecrutmentsysModel.COMPANY_HR_REGISTER" Role="COMPANY_HR_REGISTER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COMPANY_REGISTER">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="COMPANY_HR_REGISTER">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="CANDIDATE_FEEDBACK_POSITION">
+          <Key>
+            <PropertyRef Name="FeedbackId" />
+          </Key>
+          <Property Name="FeedbackId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CandidateCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CandidateEmail" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Candidate_Yof_exp" Type="Double" Nullable="false" />
+          <Property Name="CompanyId" Type="Int32" Nullable="false" />
+          <Property Name="DepartmentCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DepartmentName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="RequestedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HrId" Type="Int32" Nullable="false" />
+          <Property Name="HrEmail" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Name_of_Vacancy" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Number_of_Position" Type="Decimal" Nullable="false" Precision="18" Scale="6" />
+          <Property Name="Required_Technical_Skill" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Special_Technical_Skill" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Min_Yearof_Experience" Type="Double" Nullable="false" />
+          <Property Name="Min_Qualification" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Deadline_Date" Type="DateTime" Precision="3" />
+          <Property Name="Requested_Date" Type="DateTime" Precision="3" />
+          <Property Name="RoundingPercentage" Type="Double" />
+          <Property Name="OfferLatter" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="Feedbackprocess" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="COMPANY_REGISTER_REFRENCES">
+          <Key>
+            <PropertyRef Name="ComapanyRefId" />
+          </Key>
+          <Property Name="ComapanyRefId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyId" Type="Int32" />
+          <Property Name="CompanyEmailRef" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyType" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="ConfirmedEmail" Type="Boolean" />
+          <NavigationProperty Name="COMPANY_REGISTER" Relationship="RecrutmentsysModel.FK__COMPANY_R__Compa__30C33EC3" FromRole="COMPANY_REGISTER_REFRENCES" ToRole="COMPANY_REGISTER" />
+        </EntityType>
+        <Association Name="FK__COMPANY_R__Compa__30C33EC3">
+          <End Type="RecrutmentsysModel.COMPANY_REGISTER" Role="COMPANY_REGISTER" Multiplicity="0..1" />
+          <End Type="RecrutmentsysModel.COMPANY_REGISTER_REFRENCES" Role="COMPANY_REGISTER_REFRENCES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COMPANY_REGISTER">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="COMPANY_REGISTER_REFRENCES">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="RecrutmentsysModelStoreContainer" CdmEntityContainer="RecrutmentsysEntities">
+          <EntitySetMapping Name="COMPANY_REGISTER">
+            <EntityTypeMapping TypeName="RecrutmentsysModel.COMPANY_REGISTER">
+              <MappingFragment StoreEntitySet="COMPANY_REGISTER">
+                <ScalarProperty Name="CompanyAddress" ColumnName="CompanyAddress" />
+                <ScalarProperty Name="CompanyContect" ColumnName="CompanyContect" />
+                <ScalarProperty Name="CompanyEmail" ColumnName="CompanyEmail" />
+                <ScalarProperty Name="ComapanyName" ColumnName="ComapanyName" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COMPANY_HR_REGISTER">
+            <EntityTypeMapping TypeName="RecrutmentsysModel.COMPANY_HR_REGISTER">
+              <MappingFragment StoreEntitySet="COMPANY_HR_REGISTER">
+                <ScalarProperty Name="HrEmail" ColumnName="HrEmail" />
+                <ScalarProperty Name="HrContact" ColumnName="HrContact" />
+                <ScalarProperty Name="HrName" ColumnName="HrName" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="HrId" ColumnName="HrId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COMPANY_JOB_OPENING">
+            <EntityTypeMapping TypeName="RecrutmentsysModel.COMPANY_JOB_OPENING">
+              <MappingFragment StoreEntitySet="COMPANY_JOB_OPENING">
+                <ScalarProperty Name="Approval" ColumnName="Approval" />
+                <ScalarProperty Name="Requested_Date" ColumnName="Requested_Date" />
+                <ScalarProperty Name="Deadline_Date" ColumnName="Deadline_Date" />
+                <ScalarProperty Name="Min_Qualification" ColumnName="Min_Qualification" />
+                <ScalarProperty Name="Min_Yearof_Experience" ColumnName="Min_Yearof_Experience" />
+                <ScalarProperty Name="Special_Technical_Skill" ColumnName="Special_Technical_Skill" />
+                <ScalarProperty Name="Required_Technical_Skill" ColumnName="Required_Technical_Skill" />
+                <ScalarProperty Name="Number_of_Position" ColumnName="Number_of_Position" />
+                <ScalarProperty Name="Name_of_Vacancy" ColumnName="Name_of_Vacancy" />
+                <ScalarProperty Name="HrEmail" ColumnName="HrEmail" />
+                <ScalarProperty Name="HrId" ColumnName="HrId" />
+                <ScalarProperty Name="RequestedBy" ColumnName="RequestedBy" />
+                <ScalarProperty Name="DepartmentName" ColumnName="DepartmentName" />
+                <ScalarProperty Name="DepartmentCode" ColumnName="DepartmentCode" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="DepatmentID" ColumnName="DepatmentID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COMPANY_JOB_OPENING_REFRENCES">
+            <EntityTypeMapping TypeName="RecrutmentsysModel.COMPANY_JOB_OPENING_REFRENCES">
+              <MappingFragment StoreEntitySet="COMPANY_JOB_OPENING_REFRENCES">
+                <ScalarProperty Name="RowModifiddate" ColumnName="RowModifiddate" />
+                <ScalarProperty Name="RowcreatedDate" ColumnName="RowcreatedDate" />
+                <ScalarProperty Name="Number_of_Position" ColumnName="Number_of_Position" />
+                <ScalarProperty Name="HrId" ColumnName="HrId" />
+                <ScalarProperty Name="DepartmentCode" ColumnName="DepartmentCode" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="Job_refrenceId" ColumnName="Job_refrenceId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CANDIDATE_POSITION">
+            <EntityTypeMapping TypeName="RecrutmentsysModel.CANDIDATE_POSITION">
+              <MappingFragment StoreEntitySet="CANDIDATE_POSITION">
+                <ScalarProperty Name="ISActive" ColumnName="ISActive" />
+                <ScalarProperty Name="Candidate_Yof_exp" ColumnName="Candidate_Yof_exp" />
+                <ScalarProperty Name="CandidateEmail" ColumnName="CandidateEmail" />
+                <ScalarProperty Name="CandidateCode" ColumnName="CandidateCode" />
+                <ScalarProperty Name="HrId" ColumnName="HrId" />
+                <ScalarProperty Name="DepartmentName" ColumnName="DepartmentName" />
+                <ScalarProperty Name="DepartmentCode" ColumnName="DepartmentCode" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="CandidateId" ColumnName="CandidateId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Round_Detail_feedback">
+            <EntityTypeMapping TypeName="RecrutmentsysModel.Round_Detail_feedback">
+              <MappingFragment StoreEntitySet="Round_Detail_feedback">
+                <ScalarProperty Name="totalround_per" ColumnName="totalround_per" />
+                <ScalarProperty Name="RoundThree_per" ColumnName="RoundThree_per" />
+                <ScalarProperty Name="RoundThree" ColumnName="RoundThree" />
+                <ScalarProperty Name="RoundTwo_per" ColumnName="RoundTwo_per" />
+                <ScalarProperty Name="RoundTwo" ColumnName="RoundTwo" />
+                <ScalarProperty Name="RoundOne_per" ColumnName="RoundOne_per" />
+                <ScalarProperty Name="RoundOne" ColumnName="RoundOne" />
+                <ScalarProperty Name="HrId" ColumnName="HrId" />
+                <ScalarProperty Name="DepartmentCode" ColumnName="DepartmentCode" />
+                <ScalarProperty Name="CandidateCode" ColumnName="CandidateCode" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="RoundId" ColumnName="RoundId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CANDIDATE_FEEDBACK_POSITION">
+            <EntityTypeMapping TypeName="RecrutmentsysModel.CANDIDATE_FEEDBACK_POSITION">
+              <MappingFragment StoreEntitySet="CANDIDATE_FEEDBACK_POSITION">
+                <ScalarProperty Name="Feedbackprocess" ColumnName="Feedbackprocess" />
+                <ScalarProperty Name="OfferLatter" ColumnName="OfferLatter" />
+                <ScalarProperty Name="RoundingPercentage" ColumnName="RoundingPercentage" />
+                <ScalarProperty Name="Requested_Date" ColumnName="Requested_Date" />
+                <ScalarProperty Name="Deadline_Date" ColumnName="Deadline_Date" />
+                <ScalarProperty Name="Min_Qualification" ColumnName="Min_Qualification" />
+                <ScalarProperty Name="Min_Yearof_Experience" ColumnName="Min_Yearof_Experience" />
+                <ScalarProperty Name="Special_Technical_Skill" ColumnName="Special_Technical_Skill" />
+                <ScalarProperty Name="Required_Technical_Skill" ColumnName="Required_Technical_Skill" />
+                <ScalarProperty Name="Number_of_Position" ColumnName="Number_of_Position" />
+                <ScalarProperty Name="Name_of_Vacancy" ColumnName="Name_of_Vacancy" />
+                <ScalarProperty Name="HrEmail" ColumnName="HrEmail" />
+                <ScalarProperty Name="HrId" ColumnName="HrId" />
+                <ScalarProperty Name="RequestedBy" ColumnName="RequestedBy" />
+                <ScalarProperty Name="DepartmentName" ColumnName="DepartmentName" />
+                <ScalarProperty Name="DepartmentCode" ColumnName="DepartmentCode" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="Candidate_Yof_exp" ColumnName="Candidate_Yof_exp" />
+                <ScalarProperty Name="CandidateEmail" ColumnName="CandidateEmail" />
+                <ScalarProperty Name="CandidateCode" ColumnName="CandidateCode" />
+                <ScalarProperty Name="FeedbackId" ColumnName="FeedbackId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COMPANY_REGISTER_REFRENCES">
+            <EntityTypeMapping TypeName="RecrutmentsysModel.COMPANY_REGISTER_REFRENCES">
+              <MappingFragment StoreEntitySet="COMPANY_REGISTER_REFRENCES">
+                <ScalarProperty Name="ConfirmedEmail" ColumnName="ConfirmedEmail" />
+                <ScalarProperty Name="CompanyType" ColumnName="CompanyType" />
+                <ScalarProperty Name="CompanyPassword" ColumnName="CompanyPassword" />
+                <ScalarProperty Name="CompanyEmailRef" ColumnName="CompanyEmailRef" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="ComapanyRefId" ColumnName="ComapanyRefId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

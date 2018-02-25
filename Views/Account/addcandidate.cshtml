@@ -1,0 +1,67 @@
+﻿@model Recrutment_system.Models.ViewModel.candidatepostion
+
+@{
+    ViewBag.Title = "addcandidate";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Add Candidate To Come For interview.</h2>
+
+@using (Html.BeginForm()) 
+{
+    <span style="color:green">@TempData["msg"]</span>
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        @*<h4>candidatepostion</h4>*@
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group" style="display:none">
+            @Html.Label("Department Code", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("ddlcode", Model.Deptcode, new { @class = "control-label col-md-2" })
+
+            </div>
+        </div>
+        <div class="form-group" >
+            @Html.LabelFor(model => model.departmentcode, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.departmentcode,Model.Deptcode, new { @class = "control-label col-md-2" })                
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.email, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.email)
+                @Html.ValidationMessageFor(model => model.email)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.year_of_experience, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.year_of_experience)
+                @Html.ValidationMessageFor(model => model.year_of_experience)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to Home", "Index", "Home")
+</div>
+<div>
+    <p>
+        Here,Candidate(users for Interviewing) come for Interview.
+    </p>
+    <p>
+        Hr Add Candidate Detail And Select Job code When opening for Hr Accounts.
+    </p>
+</div>

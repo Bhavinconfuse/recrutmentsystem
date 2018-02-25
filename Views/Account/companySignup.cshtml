@@ -1,0 +1,93 @@
+﻿@model Recrutment_system.Models.ViewModel.RecrutmentSignupView
+
+@{
+    ViewBag.Title = "companySignup";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Company Signup</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        @*<h4>RecrutmentSignupView</h4>*@
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ComapanyName, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ComapanyName)
+                @Html.ValidationMessageFor(model => model.ComapanyName)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CompanyEmail, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CompanyEmail)
+                @Html.ValidationMessageFor(model => model.CompanyEmail)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CompanyContect, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CompanyContect)
+                @Html.ValidationMessageFor(model => model.CompanyContect)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CompanyAddress, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CompanyAddress)
+                @Html.ValidationMessageFor(model => model.CompanyAddress)
+            </div>
+        </div>
+
+        @*<div class="form-group">
+        @Html.LabelFor(model => model.CompanyEmailRef, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.CompanyEmailRef)
+            @Html.ValidationMessageFor(model => model.CompanyEmailRef)
+        </div>
+    </div>
+*@
+        <div class="form-group">
+            @Html.LabelFor(model => model.CompanyPassword, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CompanyPassword)
+                @Html.ValidationMessageFor(model => model.CompanyPassword)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.ConfirmPassword, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ConfirmPassword)
+                @Html.ValidationMessageFor(model => model.ConfirmPassword)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+        
+    </div>
+}
+
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+<div>
+    <p>
+        Hello,Here the Register For Comapny Owner or Admin Account.
+        </p>  
+       
+    
+</div>

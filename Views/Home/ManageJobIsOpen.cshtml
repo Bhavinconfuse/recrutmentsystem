@@ -1,0 +1,205 @@
+﻿@model Recrutment_system.Models.ViewModel.listJobView
+           @{
+    ViewBag.Title = "ManageJobIsOpen";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>List of job open</h2>
+<span class="alert-success">@ViewBag.Message</span>
+<div>
+    <table class="table table-striped table-condensed table-hover">
+        <thead>
+            <tr>
+                <th>Department Code</th>
+                <th>Department Name</th>
+                <th>Requested by</th>
+                <th>Holding Emil</th>
+                <th>Name of Vacancy</th>
+                <th>Number of positions</th>
+                <th>Requierd skill</th>
+                <th>Special Skill</th>
+                <th>Min Year of Experience</th>
+                <th>Min Qualificaion</th>
+                <th>Deadlin Date</th>
+                <th>Requested Date</th>
+                <th>Approval</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var i in Model.userjobs)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(m => i.DepartmentCode)</td>
+                    <td>@Html.DisplayFor(m => i.DepartmentName)</td>
+                    <td>@Html.DisplayFor(m => i.RequestedBy)</td>
+                    <td>@Html.DisplayFor(m => i.HrEmail)</td>
+                    <td>@Html.DisplayFor(m => i.Name_of_Vacancy)</td>
+                    <td>@Html.DisplayFor(m => i.Number_of_Position)</td>
+                    <td>@Html.DisplayFor(m => i.Required_Technical_Skill)</td>
+                    <td>@Html.DisplayFor(m => i.Special_Technical_Skill)</td>
+                    <td>@Html.DisplayFor(m => i.Min_Yearof_Experience)</td>
+                    <td>@Html.DisplayFor(m => i.Min_Qualification)</td>
+                    <td>@Html.DisplayFor(m => i.Deadline_Date)</td>
+                    <td>@Html.DisplayFor(m => i.Requested_Date)</td>
+                    <td>@Html.DisplayFor(m => i.Approval)</td>
+                    <td style="display:none">@Html.DisplayFor(m => i.DepatmentID)</td>
+                    <td><a href="javascript:void(0)" class="lnkedit">Edit</a></td>
+                    <td><a href="javascript:void(0)" class="linkdelete">Delete</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div id="divEdit" style="display:none">
+        <input type="hidden" id="hidID" />
+        <table>
+            <tr>
+                <td>Department code</td>
+                <td><input type="text" id="txtdepetcode" readonly="readonly" class="form-control"/></td>
+            </tr>
+            <tr>
+                <td>Department Name</td>
+                <td><input type="text" id="txtdepetname" class="form-control" /></td>
+            </tr>
+
+            <tr>
+                <td>Requested by</td>
+                <td>
+                    @Html.DropDownListFor(o => o.hr_requested_by.selectby, new SelectList(Model.hr_requested_by.requestd, "Value", "Text"),
+                             "", new { id = "ddlrequestby", @class = "form-control" })
+                </td>
+            </tr>
+            <tr>
+                <td>Holding Email</td>
+                <td><input type="text" id="txthodingemail" class="form-control" readonly="readonly" /></td>
+            </tr>
+            <tr>
+                <td>Name of Vacancy</td>
+                <td><input type="text" id="txtnameofvacancy" class="form-control" /></td>
+            </tr>
+            <tr>
+                <td>Number of Postion</td>
+                <td><input type="text" id="txtnumberofpostion" class="form-control" /></td>
+            </tr>
+            <tr>
+                <td>Requierd technical skill</td>
+                <td><input type="text" id="txtreqtechskill" class="form-control" /></td>
+            </tr>
+            <tr>
+                <td>Requierd special skill</td>
+                <td><input type="text" id="txtspecialskill" class="form-control" /></td>
+            </tr>
+            <tr>
+                <td>Min yearof experience</td>
+                <td><input type="text" id="txtminyerofexperience" class="form-control" /></td>
+            </tr>
+            <tr>
+                <td>Min Qualification</td>
+                <td><input type="text" id="txtminqualification" class="form-control" /></td>
+            </tr>
+            <tr>
+                <td>Deadline Date</td>
+                <td><input type="text" id="txtdeadlindate" class="form-control" /></td>
+            </tr>
+        </table>
+
+    </div>
+</div>
+<script type="text/javascript">
+   
+    $(function () {
+        var intidailog = function (type) {
+            var title = type;
+            $("#divEdit").dialog({
+                autoOpen: false,
+                model: true,
+                title: type + 'Job open',
+                width: 500,
+                buttons: {
+                    Save: function () {
+                        var deptcode = $("#txtdepetcode").val();
+                        var deptname = $("#txtdepetname").val();
+                        var requestedby = $("#ddlrequestby").val();
+                        var nameofvcnsy = $("#txtnameofvacancy").val();
+                        var numberofpo = $("#txtnumberofpostion").val();
+                        var requierdskill = $("#txtreqtechskill").val();
+                        var specialskill = $("#txtspecialskill").val();
+                        var minyerofexp = $("#txtminyerofexperience").val();
+                        var minqualif = $("#txtminqualification").val();
+                        var deadlindate = $("#txtdeadlindate").val();
+                        var deptid = $("#hidID").val();
+                        updatejob(deptid, deptcode, deptname, requestedby, nameofvcnsy, numberofpo, requierdskill, specialskill, minyerofexp, minqualif, deadlindate);
+                        $(this).dialog("destroy");
+                    },
+                    Cancel: function () { $(this).dialog("destroy"); }
+                }
+            });
+        }
+
+
+        function updatejob(deptid,depcode, deptname, requestedby, nameofvacansy, numberofpo, requiredskill, specialskill, minyerofexp, minquali, deadlinedt) {
+            $.ajax({
+                type: "POST",
+                url: "@(Url.Action("Updatejobdata", "Home"))",
+                data: {deptId:deptid, deptcode: depcode, deptname: deptname, reqsetedby: requestedby, nameofvacansy: nameofvacansy, numberofposition: numberofpo, requiredskill: requiredskill, specialskill: specialskill, minyofexp: minyerofexp, minqualifi: minquali, deadlinedt: deadlinedt },
+                success: function (data) {
+                    $("#divlistofjobs").load("@(Url.Action("ManageJobIsOpen", "Home", new {status ="update"}))");
+                },
+                error: function (error) {
+                    //to do somthing logic
+                    alert(error);
+                }
+            });
+        }
+
+        $("a.lnkedit").on("click", function () {
+            intidailog("Edit");
+            $(".alert-success").empty();
+            var row = $(this).closest('tr');
+
+            $("#hidID").val(row.find("td:eq(13)").html().trim());  // here for input id is hidden..
+
+            $("#txtdepetcode").val(row.find("td:eq(0)").html().trim())
+            $("#txtdepetname").val(row.find("td:eq(1)").html().trim())
+            $("#ddlrequestby").val(row.find("td:eq(2)").html().trim())
+            $("#txthodingemail").val(row.find("td:eq(3)").html().trim())
+            $("#txtnameofvacancy").val(row.find("td:eq(4)").html().trim())
+            $("#txtnumberofpostion").val(row.find("td:eq(5)").html().trim())
+            $("#txtreqtechskill").val(row.find("td:eq(6)").html().trim())
+            $("#txtspecialskill").val(row.find("td:eq(7)").html().trim())
+            $("#txtminyerofexperience").val(row.find("td:eq(8)").html().trim())
+            $("#txtminqualification").val(row.find("td:eq(9)").html().trim())
+            $("#txtdeadlindate").val(row.find("td:eq(10)").html().trim())
+
+
+            $("#divEdit").dialog("open");
+            return false;
+        });
+    });
+
+    //delete here for job selected.............................
+    function DeleteJob(id) {
+        $.ajax({
+            type: "POST",
+            url: "@(Url.Action("DeleteJob","Home"))",
+            data: { depetid: id },
+            success: function (data) {
+                $("#divlistofjobs").load("@(Url.Action("ManageJobIsOpen", "Home", new {status ="delete"}))");
+            },
+            error: function (error) {
+                alert(error);
+            }
+        });
+    }
+
+
+    $("a.linkdelete").on("click", function () {
+        var row = $(this).closest('tr');
+        var id = row.find("td:eq(13)").html().trim();
+        $("#txtdepetcode").val(row.find("td:eq(0)").html().trim())
+        var deptcode = $("#txtdepetcode").val();
+        var answer = confirm("You are about to delete this job with code is " + deptcode + " .continue");
+        if (answer)
+            DeleteJob(id);
+            return false;
+    });
+</script>

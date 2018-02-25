@@ -1,0 +1,66 @@
+﻿@model Recrutment_system.Models.ViewModel.UserSignup
+
+@{
+    ViewBag.Title = "Createuser";
+    Layout = "~/Views/Shared/Admin_layout.cshtml";
+}
+
+<h2>Create New user.</h2>
+
+<span style="color:green">@TempData["msg"]</span>
+<span style="color:darkorange">@TempData["msg1"]</span>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @*<h4>UserSignup</h4>*@
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.HrName, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.HrName)
+                @Html.ValidationMessageFor(model => model.HrName)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.HrContact, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.HrContact)
+                @Html.ValidationMessageFor(model => model.HrContact)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.HrEmail, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.HrEmail)
+                @Html.ValidationMessageFor(model => model.HrEmail)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+@*<div>
+        @Html.ActionLink("Back to Home", "Index", "Home")
+    </div>*@
+<div>
+    <p>
+        Hello,Here the Register For Comapny HR or Particular Persons Account.
+    </p>
+
+
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

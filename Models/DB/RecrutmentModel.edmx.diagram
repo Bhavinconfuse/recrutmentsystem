@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1e283fd7d6f840058ae242f2f15b9aa2" Name="Diagram1">
+        <EntityTypeShape EntityType="RecrutmentsysModel.COMPANY_REGISTER" Width="1.5" PointX="0.75" PointY="0.875" />
+        <EntityTypeShape EntityType="RecrutmentsysModel.COMPANY_HR_REGISTER" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="RecrutmentsysModel.COMPANY_JOB_OPENING" Width="1.5" PointX="3.375" PointY="4.75" />
+        <EntityTypeShape EntityType="RecrutmentsysModel.COMPANY_JOB_OPENING_REFRENCES" Width="1.5" PointX="5.375" PointY="0.75" />
+        <EntityTypeShape EntityType="RecrutmentsysModel.CANDIDATE_POSITION" Width="1.5" PointX="5.375" PointY="4.75" />
+        <EntityTypeShape EntityType="RecrutmentsysModel.Round_Detail_feedback" Width="1.5" PointX="0.75" PointY="7.75" />
+        <AssociationConnector Association="RecrutmentsysModel.FK__COMPANY_H__Compa__00200768" />
+        <EntityTypeShape EntityType="RecrutmentsysModel.CANDIDATE_FEEDBACK_POSITION" Width="1.5" PointX="7.375" PointY="0.75" />
+        <EntityTypeShape EntityType="RecrutmentsysModel.COMPANY_REGISTER_REFRENCES" Width="1.5" PointX="3" PointY="0.875" />
+        <AssociationConnector Association="RecrutmentsysModel.FK__COMPANY_R__Compa__30C33EC3" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

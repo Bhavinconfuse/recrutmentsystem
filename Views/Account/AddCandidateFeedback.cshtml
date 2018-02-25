@@ -1,0 +1,132 @@
+﻿@model Recrutment_system.Models.ViewModel.candidatefeedback
+
+@{
+    ViewBag.Title = "AddCandidateFeedback";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Add Candidate Feedback</h2>
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+<span style="color:green">@TempData["msg"]</span>
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        @*<h4>candidatefeedback</h4>*@
+        <hr />
+        @Html.ValidationSummary(true)
+        <div style="display:none">
+            @Html.DropDownList("ddlcode",Model.candicode)
+        </div>
+        <div class="form-group">
+            @Html.Label("Candidate Code", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.candidatecode,Model.candicode, new { @class = "control-label col-md-2" })
+                
+            </div>
+        </div>
+        
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.round1, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.round1)
+                @Html.ValidationMessageFor(model => model.round1)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.round1P, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.round1P, new {@class="r1" ,id="r1"})
+                @Html.ValidationMessageFor(model => model.round1P)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.round2, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.round2)
+                @Html.ValidationMessageFor(model => model.round2)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.round2P, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.round2P, new { @class = "r1", id = "r2" })
+                @Html.ValidationMessageFor(model => model.round2P)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.round3, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.round3)
+                @Html.ValidationMessageFor(model => model.round3)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.round3P, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.round3P, new { @class = "r1", id = "r3" })
+                @Html.ValidationMessageFor(model => model.round3P)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.rounding_percent, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.rounding_percent, new { @readonly = "readonly" })
+                @Html.ValidationMessageFor(model => model.rounding_percent)
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to Home", "Index","Home")
+</div>
+<div>
+    <p>
+        Here, After interview process copmlete after then hr Add (users feedback) like - Rounding process for Company.
+    </p>
+</div>
+<script>
+
+    //$(document).ready(function () {
+    //    $(".r1").each(function () {            
+    //        $(this).keyup(function () {
+    //            calsum();
+    //        });
+    //    });
+    //});
+
+    //function calsum() {
+    //    var sum = 0;
+    //    $(".r1").each(function () {
+    //        if (!isNaN(this.value) && this.value.length != 0) {
+    //            sum += parseFloat(this.value);
+    //        }
+    //    });
+    //    $("#tot").html(sum.toFixed(2));
+    //}
+
+    $('#round1P,#round2P,#round3P').on('keyup', function () {
+        var val1 = Number($('#round1P').val());
+        var val2 = Number($('#round2P').val());
+        var val3 = Number($('#round3P').val());
+        $('#rounding_percent').val(isNaN(val1 + val2 + val3) ? 0 : (val1 + val2 + val3));
+
+    });
+
+</script>

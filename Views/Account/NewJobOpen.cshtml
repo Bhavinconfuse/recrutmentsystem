@@ -1,0 +1,111 @@
+﻿@model Recrutment_system.Models.ViewModel.NewJobView
+
+@{
+    ViewBag.Title = "NewJobOpen";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>New Job Create</h2>
+<div style="color:green">@ViewBag.clear</div>
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        @*<h4>NewJobView</h4>*@
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DepartmentName, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DepartmentName, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.DepartmentName)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.RequestedBy, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.RequestedBy, new List<SelectListItem> {
+                    new SelectListItem { Text="Admin", Value="Admin" },
+                    new SelectListItem { Text="HR", Value="HR" }
+                }, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.RequestedBy)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name_of_Vacancy, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Name_of_Vacancy, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Name_of_Vacancy)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Number_of_Position, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Number_of_Position, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Number_of_Position)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Required_Technical_Skill, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Required_Technical_Skill, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Required_Technical_Skill)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Special_Technical_Skill, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Special_Technical_Skill, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Special_Technical_Skill)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Min_Yearof_Experience, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Min_Yearof_Experience, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Min_Yearof_Experience)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Min_Qualification, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Min_Qualification)
+                @Html.ValidationMessageFor(model => model.Min_Qualification)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Deadline_Date, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Deadline_Date, new { @class = "date-picker" })
+                @Html.ValidationMessageFor(model => model.Deadline_Date)
+            </div>
+        </div>
+        
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+  
+}
+
+<div>
+    @Html.ActionLink("Back to Home", "Index", "Home")
+</div>
+<div>
+    <p>Hello, Here Company "HR" Add Opening for Company Jobs on Department wise end of some DeadLine Date.</p>
+    <p>
+        Add Some Jobs after Admin need to approval.
+    </p>
+</div>
